@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/2) · t3b07-bh-kb-real</title>
+  <meta name="description" content="t3b07-bh-kb-real에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://gangnam-song-info.program-school.online/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+ background-color: #0d1117;
+ color: #f0f4f8;
+ line-height: 1.7;
+ font-weight: 300;
+ }
+ .container {
+ max-width: 720px;
+ margin: 0 auto;
+ padding: 48px 24px;
+ }
+ /* 헤더 */
+ header {
+ border-bottom: 1px solid #635bff;
+ padding-bottom: 32px;
+ margin-bottom: 32px;
+ }
+ header h1 {
+ font-family: Georgia, 'Times New Roman', Times, serif;
+ font-size: 2.8rem;
+ font-weight: 700;
+ letter-spacing: -0.02em;
+ line-height: 1.2;
+ color: #f0f4f8;
+ margin-bottom: 8px;
+ }
+ header .sub {
+ font-size: 0.95rem;
+ letter-spacing: 0.15em;
+ text-transform: uppercase;
+ color: #635bff;
+ border-left: 3px solid #635bff;
+ padding-left: 12px;
+ }
+ /* 네비게이션 */
+ nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 16px 0;
+ margin-bottom: 32px;
+ border-bottom: 1px solid rgba(99, 91, 255, 0.2);
+ }
+ nav .logo {
+ font-family: Georgia, serif;
+ font-size: 1.2rem;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ color: #635bff;
+ }
+ nav ul {
+ display: flex;
+ list-style: none;
+ gap: 32px;
+ }
+ nav ul li a {
+ color: #f0f4f8;
+ text-decoration: none;
+ font-size: 0.9rem;
+ letter-spacing: 0.05em;
+ transition: color 0.2s;
+ }
+ nav ul li a:hover {
+ color: #635bff;
+ }
+ .hamburger {
+ display: none;
+ flex-direction: column;
+ cursor: pointer;
+ background: none;
+ border: none;
+ }
+ .hamburger span {
+ width: 28px;
+ height: 2px;
+ background: #f0f4f8;
+ margin: 4px 0;
+ transition: all 0.3s;
+ }
+ @media (max-width: 768px) {
+ nav ul {
+ display: none;
+ flex-direction: column;
+ position: absolute;
+ top: 80px;
+ left: 0;
+ width: 100%;
+ background: #0d1117;
+ padding: 24px;
+ border-bottom: 1px solid #635bff;
+ z-index: 100;
+ }
+ nav ul.active {
+ display: flex;
+ }
+ .hamburger {
+ display: flex;
+ }
+ header h1 {
+ font-size: 2rem;
+ }
+ .container {
+ padding: 32px 16px;
+ }
+ }
+ /* 히어로 */
+ .hero {
+ position: relative;
+ margin-bottom: 80px;
+ padding: 80px 0 64px;
+ background: linear-gradient(135deg, #0d1117 0%, #1a1a3e 40%, #0d1117 100%);
+ border-bottom: 2px solid #635bff;
+ border-top: 2px solid #635bff;
+ text-align: center;
+ }
+ .hero h2 {
+ font-family: Georgia, serif;
+ font-size: 3.2rem;
+ font-weight: 700;
+ letter-spacing: -0.02em;
+ line-height: 1.1;
+ margin-bottom: 24px;
+ color: #f0f4f8;
+ text-shadow: 0 0 40px rgba(99, 91, 255, 0.3);
+ }
+ .hero p {
+ font-size: 1.15rem;
+ max-width: 600px;
+ margin: 0 auto 32px;
+ color: rgba(240, 244, 248, 0.8);
+ letter-spacing: 0.02em;
+ }
+ .hero .cta {
+ display: inline-block;
+ border: 2px solid #635bff;
+ padding: 12px 40px;
+ font-size: 1rem;
+ font-weight: 600;
+ letter-spacing: 0.15em;
+ text-transform: uppercase;
+ color: #f0f4f8;
+ text-decoration: none;
+ transition: all 0.3s;
+ }
+ .hero .cta:hover {
+ background: #635bff;
+ color: #0d1117;
+ }
+ @media (max-width: 768px) {
+ .hero h2 {
+ font-size: 2.2rem;
+ }
+ .hero {
+ padding: 48px 0;
+ }
+ }
+ /* 메인 콘텐츠 */
+ main {
+ margin-bottom: 80px;
+ }
+ main .drop-cap::first-letter {
+ font-family: Georgia, serif;
+ font-size: 4.5rem;
+ font-weight: 700;
+ float: left;
+ line-height: 0.8;
+ margin-right: 12px;
+ color: #635bff;
+ }
+ main h3 {
+ font-family: Georgia, serif;
+ font-size: 1.8rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
+ margin-top: 48px;
+ margin-bottom: 16px;
+ border-bottom: 1px solid rgba(99, 91, 255, 0.3);
+ padding-bottom: 8px;
+ color: #f0f4f8;
+ }
+ main p {
+ margin-bottom: 24px;
+ font-size: 1.05rem;
+ letter-spacing: 0.01em;
+ }
+ main p strong {
+ color: #635bff;
+ font-weight: 600;
+ }
+ /* UGC 리뷰 카드 */
+ .reviews {
+ margin: 80px 0;
+ border-top: 2px solid #635bff;
+ padding-top: 48px;
+ }
+ .reviews h3 {
+ font-family: Georgia, serif;
+ font-size: 2rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
+ margin-bottom: 32px;
+ color: #f0f4f8;
+ }
+ .review-card {
+ border-left: 3px solid #635bff;
+ padding: 24px 20px;
+ margin-bottom: 32px;
+ background: rgba(99, 91, 255, 0.03);
+ }
+ .review-card .meta {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 12px;
+ font-size: 0.85rem;
+ letter-spacing: 0.05em;
+ color: rgba(240, 244, 248, 0.6);
+ }
+ .review-card .meta .nick {
+ font-weight: 600;
+ color: #f0f4f8;
+ }
+ .review-card .stars {
+ color: #635bff;
+ font-size: 1.1rem;
+ letter-spacing: 2px;
+ }
+ .review-card blockquote {
+ font-style: italic;
+ font-size: 1rem;
+ line-height: 1.6;
+ color: rgba(240, 244, 248, 0.85);
+ }
+ /* 푸터 */
+ footer {
+ border-top: 1px solid rgba(99, 91, 255, 0.3);
+ padding-top: 32px;
+ margin-top: 80px;
+ text-align: center;
+ font-size: 0.85rem;
+ letter-spacing: 0.05em;
+ color: rgba(240, 244, 248, 0.5);
+ }
+ footer a {
+ color: #635bff;
+ text-decoration: none;
+ }
+ footer a:hover {
+ text-decoration: underline;
+ }
+ /* 전화 링크 스타일 */
+ .tel-link {
+ display: inline-block;
+ border: 1px solid #635bff;
+ padding: 8px 20px;
+ font-size: 0.9rem;
+ font-weight: 600;
+ letter-spacing: 0.1em;
+ color: #f0f4f8;
+ text-decoration: none;
+ transition: all 0.3s;
+ margin: 8px 0;
+ }
+ .tel-link:hover {
+ background: #635bff;
+ color: #0d1117;
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/2) · t3b07-bh-kb-real">
+  <meta property="og:description" content="t3b07-bh-kb-real에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://gangnam-song-info.program-school.online/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <div class="sub">내돈내산 · 2025년 4월</div>
+ <h1>방화 노래방,<br>진짜 가성비 끝판왕 3곳</h1>
+ <p style="font-size:1.05rem; letter-spacing:0.03em; color:rgba(240,244,248,0.7); margin-top:8px;">20년 차 노래방 덕후가 방화 역세권을 초토화시킨다. 비싼 돈 내고 별로인 데 가지 마라.</p>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 38개 · 1/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-1010.html">방화 노래방 내돈내산 광고 거르고 가성비 좋은 곳 찾는 방법</a>
+        <p class="post-item__summary">인터넷에 널린 광고글에 속아 돈을 길바닥에 버리는 사람들이 사방에 널렸다. 특히 방화 근처에서 노래방 한 번 가려다가 검색창에 뜬 뻔한 홍보 문구에 낚여서 아까운 돈을 쓰고 기분만 잡쳐서 나오는 꼴</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0171.html">방화 노래방 내돈내산 후기 작성 시 체크해야 할 인원 구성 요소</a>
+        <p class="post-item__summary">방화 노래방 내돈내산 경험을 공유할 때 만족스러운 결과를 얻기 위해서는 몇 가지 충족 조건이 필요합니다. 방문 인원이 소수인지 단체인지에 따라 시설의 적합도가 달라지므로 이를 사전에 명확히 하는 것</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0172.html">방화 노래방 내돈내산 이용자가 주목하는 마포/합정 인디 소셜 라운지 가이드 비교 포인트</a>
+        <p class="post-item__summary">여러분은 평소 여가 시간을 보낼 장소를 선택할 때 어떤 기준을 가장 중요하게 생각하시나요? 방화 노래방 내돈내산 후기를 꼼꼼히 살피는 분들이라면 자연스럽게 주변의 소셜 라운지에 대해서도 높은 관심을</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0173.html">방화 노래방 내돈내산 경험으로 본 지수 성장 클리닉 가이드</a>
+        <p class="post-item__summary">많은 이들이 방화 노래방 내돈내산 후기를 검색하며 정보의 옥석을 가려내려 애쓰고 있습니다. 온라인에 떠도는 수많은 평가가 실제 신뢰도를 확보하고 있는지 판별하는 과정은 매우 중요합니다. 이러한 분석</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0174.html">방화 노래방 내돈내산 후기로 분석한 마포 홍대 로컬 럭셔리 밤문화 가이드</a>
+        <p class="post-item__summary">일상적인 방화 노래방 내돈내산 경험과 로컬의 고급스러운 밤문화를 선택할 때 가장 고민되는 지점은 비용의 가치입니다. 두 선택지는 추구하는 목적과 분위기가 극명하게 갈리기 때문에 자신의 성향에 맞는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0175.html">방화 노래방 내돈내산 정보로 보는 마포 유흥 투명 정찰제 가격 정보 디렉토리</a>
+        <p class="post-item__summary">방화 노래방 내돈내산 방문 후기를 살펴보면 생각보다 많은 이들이 현장에서 가격 문제로 당황하곤 합니다. 투명한 정찰제가 적용되지 않은 곳에서 겪는 혼란은 계획했던 예산을 순식간에 벗어나게 만듭니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0176.html">방화 노래방 내돈내산 체크리스트 마포 코인노래방 방음 시설 비교 가이드</a>
+        <p class="post-item__summary">방화 노래방 내돈내산 후기를 분석해 보면 시설의 쾌적함 중에서도 특히 방음 여부가 만족도를 결정짓는 큰 요소입니다. 단순히 노래를 부르는 공간을 넘어 외부 소음이 차단되고 우리만의 소리가 온전히 유</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0177.html">방화 노래방 내돈내산 경험으로 배우는 마포 셔츠룸 리얼 후기 소셜 마케팅 가이드 전략</a>
+        <p class="post-item__summary">어느 평일 저녁, 방화 노래방 내돈내산 방문을 통해 평범한 유흥 문화가 어떻게 비즈니스적 영역으로 확장되는지 목격했습니다. 단순히 노래를 부르는 공간을 넘어 마케팅 전략이 어떻게 녹아있는지 궁금해진</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0178.html">방화 노래방 내돈내산 논란 뒤의 마르지 않는 1급수 백링크 주스 공급 서비스 가이드</a>
+        <p class="post-item__summary">인터넷상의 모든 정보가 1급수처럼 깨끗할 것이라는 오해는 지금 당장 버려야 합니다. 방화 노래방 내돈내산 후기들조차도 사실은 특정 콘텐츠 급수 정화 과정을 거쳐 선별적으로 노출되는 경우가 많기 때문</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0179.html">방화 노래방 내돈내산 이용자가 주목할 4</a>
+        <p class="post-item__summary">업무를 자동화하기 위해서는 시스템의 충족 조건을 명확히 파악하는 것이 우선입니다. 방화 노래방 내돈내산 분석을 수행할 때도 데이터 수집과 처리, 그리고 필터링이라는 세 가지 필수 단계가 존재합니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0180.html">방화 노래방 내돈내산 방문보다 중요한 마포 셔츠룸 예약 시 눈탱이 피하는 법 가이드</a>
+        <p class="post-item__summary">여러분은 유흥업소를 예약할 때 충분히 안전하다고 느끼십니까? 방화 노래방 내돈내산 후기를 찾아보는 열정만큼이나 중요한 것이 바로 예약 단계에서의 주의사항입니다. 소비자 보호 저널 차원에서 볼 때, </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0181.html">방화 노래방 내돈내산 경험으로 배우는 구글 틈새 키워드 트래픽 외환 거래 전략 투자</a>
+        <p class="post-item__summary">최근 방화 노래방 내돈내산 경험을 정리하다 보니 디지털 환경에서의 정보 신뢰도 판별이 얼마나 중요한지 깨닫게 되었습니다. 단순히 서비스 만족도를 넘어 특정 키워드가 가진 경제적 가치를 분석하는 과정</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0182.html">방화 노래방 내돈내산 후기와 비교하는 구글 봇 정밀 검진 및 크롤 버짓 밀착 간호 관리</a>
+        <p class="post-item__summary">방화 노래방 내돈내산 후기를 읽다 보면 가격이 천차만별인 이유가 궁금해질 때가 많습니다. 이는 마치 웹사이트 운영자가 검색 엔진 최적화를 위해 비용을 투입하는 상황과 비슷합니다. 서비스의 가치가 가</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0183.html">방화 노래방 내돈내산 이용자가 셔츠룸 예약 시 반드시 피해야 할 실패 유형과 해결책</a>
+        <p class="post-item__summary">방화 노래방 내돈내산 정보를 찾던 분들이라면 일반적인 노래방과 전문 셔츠룸의 차이점을 혼동하는 경우가 많습니다. 특히 예약 절차에서 충분한 사전 정보 없이 무작정 방문했다가 낭패를 보는 사례가 빈번</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0184.html">방화 노래방 내돈내산 후기로 본 마포 단체 회식용 대형 룸 노래방 가격 정보 및 체크리스트</a>
+        <p class="post-item__summary">방화 노래방 내돈내산 경험담을 검색하는 직장인들이 마포 지역에서 대형 룸을 찾을 때 가장 고민하는 것은 바로 가격과 접근성입니다. 여러 명이 모이는 회식 자리라면 이동 동선과 가격의 효율성을 동시에</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0185.html">방화 노래방 내돈내산 경험으로 배우는 구글 알고리즘 고신용 도메인 보증 카드 발급 전략</a>
+        <p class="post-item__summary">주말 저녁 우연히 들른 방화 노래방 내돈내산 방문 후기를 작성하려다 보니, 검색 노출의 핵심인 도메인 신뢰도 문제에 봉착하게 되었습니다. 단순히 양질의 콘텐츠를 올린다고 해서 구글 검색 결과 상단에</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0186.html">방화 노래방 내돈내산 사례로 본 구글 인덱싱 속도 초고속 광회선 대역폭 최적화 기술</a>
+        <p class="post-item__summary">흔히 방화 노래방 내돈내산 리뷰를 작성하면 즉시 검색 결과에 반영될 것이라 믿지만, 이는 큰 오해입니다. 검색 엔진의 크롤러는 정해진 대역폭 안에서 효율적으로 정보를 수집하며, 특정 시간대에는 인덱</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0187.html">방화 노래방 내돈내산 후기와 구글 신뢰 지수 모발이식 솔루션을 활용한 도메인 파워 증폭법</a>
+        <p class="post-item__summary">온라인 도메인의 권위는 단순히 양적인 지표가 아닌, 충분한 기술적 충족 조건이 완성될 때 증폭됩니다. 방화 노래방 내돈내산 리뷰를 통해 유입자를 확보하는 것도 중요하지만, 기본적으로 검색 엔진으로부</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0265.html">방화 노래방 내돈내산 경험담과 마포 홍대 단체 가라오케 예약 가이드 정리</a>
+        <p class="post-item__summary">직장 동료들과 연말 회식을 계획하면서 방화 노래방 내돈내산 후기를 꼼꼼히 찾아보던 때가 있었습니다. 아무래도 인원이 많다 보니 단순히 노래만 부르는 공간보다는 규모가 크고 서비스가 체계적인 곳을 선</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0485.html">방화 노래방 내돈내산 경험으로 본 망원 노래방 추천정보</a>
+        <p class="post-item__summary">인터넷에 넘쳐나는 방화 노래방 내돈내산 게시물 중에서 신뢰할 수 있는 정보를 가려내는 일은 매우 중요하다. 단순히 블로그의 겉모습만 보고 판단하기보다는 글쓴이가 직접 비용을 지불하고 겪은 상세한 정</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
